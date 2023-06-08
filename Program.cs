@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc
   .WriteTo.File("Log/log.txt", LogEventLevel.Error, rollingInterval: RollingInterval.Day)
   .WriteTo.File("Log/log.txt", LogEventLevel.Warning, rollingInterval: RollingInterval.Day)
-  .WriteTo.File("Log/log.txt", LogEventLevel.Information, rollingInterval: RollingInterval.Day)
   .WriteTo.File("Log/log.txt", LogEventLevel.Fatal, rollingInterval: RollingInterval.Day));
 
 builder.Services.AddControllers();

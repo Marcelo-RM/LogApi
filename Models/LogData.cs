@@ -6,5 +6,6 @@ namespace LogApi.Models
     public string? Application { get; set; }
     public string? Title { get; set; }
     public string? Message { get; set; }
+    public string? DateTime { get; set; }
   }
 }

@@ -15,16 +15,16 @@ public class LogController : ControllerBase
     switch (log.Level)
     {
       case "ERR":
-        Log.Error($"{log.Application} | {log.Title} - {log.Message}");
+        Log.Error($"APP: {log.Application} | TITLE: {log.Title} | MESSAGE: {log.Message}");
         break;
       case "WRN":
-        Log.Warning($"{log.Application} | {log.Title} - {log.Message}");
+        Log.Warning($"APP: {log.Application} | TITLE: {log.Title} | MESSAGE: {log.Message}");
         break;
       case "INF":
-        Log.Information($"{log.Application} | {log.Title} - {log.Message}");
+        Log.Information($"APP: {log.Application} | TITLE: {log.Title} | MESSAGE: {log.Message}");
         break;
       default:
-        Log.Fatal($"{log.Application} | {log.Title} - {log.Message}");
+        Log.Fatal($"APP: {log.Application} | TITLE: {log.Title} | MESSAGE: {log.Message}");
         break;
     }
 
