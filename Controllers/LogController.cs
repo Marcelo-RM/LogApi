@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using LogApi.Models;
 
 namespace LogApi.Controllers;
 
@@ -6,10 +8,27 @@ namespace LogApi.Controllers;
 [Route("[controller]")]
 public class LogController : ControllerBase
 {
-  [HttpGet(Name = "GetLog")]
-  public ObjectResult Get()
+  [HttpPost(Name = "SetLog")]
+  public ObjectResult SetLog(LogData log)
   {
-    return Ok("Tudo funcionando!");
+
+    switch (log.Level)
+    {
+      case "ERR":
+        Log.Error($"{log.Application} | {log.Title} - {log.Message}");
+        break;
+      case "WRN":
+        Log.Warning($"{log.Application} | {log.Title} - {log.Message}");
+        break;
+      case "INF":
+        Log.Information($"{log.Application} | {log.Title} - {log.Message}");
+        break;
+      default:
+        Log.Fatal($"{log.Application} | {log.Title} - {log.Message}");
+        break;
+    }
+
+    return Ok("Log salvo!");
   }
 
 }
